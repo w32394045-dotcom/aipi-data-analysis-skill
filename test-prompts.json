@@ -1,0 +1,28 @@
+{
+  "skill": "aipi-data-analysis-skill",
+  "version": "0.2.0",
+  "test_cases": [
+    {
+      "id": "format-01",
+      "type": "should_trigger",
+      "prompt": "（把该文件作为 skill 装入宿主后）帮我分析一下这份门店经营数据。",
+      "expected_behavior": "文件含合法 YAML frontmatter（name + description 含做什么/何时用/中英触发词），可被宿主发现并触发",
+      "notes": "新增：当前文件为 502 行纯 markdown，无 frontmatter，Agent Skills 标准下不可被发现——本次必修项"
+    },
+    {
+      "id": "output-quality-01",
+      "type": "output_quality",
+      "prompt": "这是 20 行 × 6 列的门店月度经营数据（门店/月份/营业额/客流量/客单价/满意度），帮我分析。",
+      "expected_behavior": "完整走完：环境自检 → 数据质量四问（含数据可信度评估）→ 阶段一理解结构 → 阶段二统计概况 → 阶段三挖掘发现 → 输出结构1（一句话摘要+核心发现+建议）→ 四栏正式报告（每栏带数字、假设标「假设：」、动作到人到期）→ 验收三问",
+      "notes": "新增：补 dim8 实测（该仓库原本无任何测试文件）"
+    },
+    {
+      "id": "script-bug-01",
+      "type": "edge_case",
+      "prompt": "环境自检通过（支持代码执行），请运行第 9.1 节的数据读取与清洗脚本。",
+      "expected_behavior": "脚本可直接执行、零 SyntaxError；输出信息格式正确无错位缩进",
+      "notes": "新增：原脚本 f-string 内含字面换行（转义 n 被写成真实换行），Python <3.12 会 SyntaxError——验证已修复"
+    }
+  ],
+  "optimized_by": "w32394045-dotcom @ auto-optimize/20260927-1437"
+}

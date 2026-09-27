@@ -1,3 +1,9 @@
+---
+name: data-analysis-skill
+description: |
+  当用户上传或描述一份结构化数据（Excel/CSV）并需要经营分析、业务诊断、问题挖掘时使用。典型信号："帮我分析这份数据""这份报表说明了什么""哪些门店/渠道有问题""数据分析报告""对比一下这几个月的经营情况""analyze this data / data analysis / 经营分析 / 业务诊断 / 数据分析"；也用于课堂场景：学员拿到真实业务数据，需要走完从数据上传到行动决策的完整分析流程。不适用于：需要回归分析/假设检验等统计学建模（请咨询数据科学家）、非结构化数据（文本/图片/音频）、预测类任务（本 SKILL 只回答"发生了什么"，不回答"将要发生什么"）。
+---
+
 # 数据分析 SKILL（通用版）
 
 > **版本**: v1.0  
@@ -358,15 +364,9 @@ import numpy as np
 # 基础信息
 print(f"数据形状: {df.shape}")
 print(f"列名: {list(df.columns)}")
-print(f"
-数据类型:
-{df.dtypes}")
-print(f"
-缺失值:
-{df.isnull().sum()}")
-print(f"
-前5行:
-{df.head()}")
+print(f"\n数据类型:\n{df.dtypes}")
+print(f"\n缺失值:\n{df.isnull().sum()}")
+print(f"\n前5行:\n{df.head()}")
 
 # 数值列统计
 desc = df.describe()
@@ -397,8 +397,7 @@ for col in numeric_cols:
 # 按维度分组（将 '维度列名' 替换为实际列名）
 dimension = '维度列名'  # 例如: '城市', '业态', '渠道'
 for col in numeric_cols:
-    print(f"
-【按 {dimension} 分组的 {col}】")
+    print(f"\n【按 {dimension} 分组的 {col}】")
     grouped = df.groupby(dimension)[col].agg(['mean', 'median', 'count', 'std'])
     print(grouped.round(2))
 ```
@@ -419,8 +418,7 @@ for group in df[dimension].unique():
     upper = mean_v + 2 * std_v
     outliers = df[(df[dimension] == group) & ((df[target_col] < lower) | (df[target_col] > upper))]
     if len(outliers) > 0:
-        print(f"
-[{group}] {target_col} 均值={mean_v:.2f}, 2σ范围=[{lower:.2f}, {upper:.2f}]")
+        print(f"\n[{group}] {target_col} 均值={mean_v:.2f}, 2σ范围=[{lower:.2f}, {upper:.2f}]")
         for _, row in outliers.iterrows():
             print(f"  → 异常记录: {target_col}={row[target_col]}")
 ```
@@ -432,8 +430,7 @@ corr_matrix = df[numeric_cols].corr()
 print("【相关性矩阵】")
 print(corr_matrix.round(3))
 
-print("
-【强相关对 (|r| > 0.7)】")
+print("\n【强相关对 (|r| > 0.7)】")
 for i in range(len(numeric_cols)):
     for j in range(i+1, len(numeric_cols)):
         r = corr_matrix.iloc[i, j]
@@ -454,8 +451,7 @@ print("【月度趋势】")
 print(monthly.round(2))
 
 # 环比变化
-print("
-【环比变化】")
+print("\n【环比变化】")
 for col in numeric_cols:
     changes = monthly[col].pct_change() * 100
     print(f"  {col}: {changes.round(1).to_dict()}")

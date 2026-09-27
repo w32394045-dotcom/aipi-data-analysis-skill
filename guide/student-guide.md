@@ -53,7 +53,7 @@
 
 ### 方式 B：完整版（推荐课后深度学习）
 
-1. 打开 `skill/data-analysis-skill.md`
+1. 打开 `data-analysis-skill/SKILL.md`
 2. 按照文档中的「环境自检」→「数据质量四问」→「三阶段分析」→「输出结构1」→「输出结构2」逐步执行
 3. 参考文档中的 Python 脚本模板，根据你的数据结构调整列名后运行
 
@@ -152,7 +152,7 @@
 
 | 文件 | 用途 | 什么时候用 |
 |---|---|---|
-| `skill/data-analysis-skill.md` | 完整版技能包 | 课后复习、深度理解分析方法论 |
+| `data-analysis-skill/SKILL.md` | 完整版技能包 | 课后复习、深度理解分析方法论 |
 | `prompt/quick-prompt.md` | 轻量版 Prompt | 课堂上快速复制粘贴使用 |
 | `guide/student-guide.md` | 本文件 | 第一次使用时通读，遇到问题查阅 |
 | `examples/` | 完整分析示例 | 不知道"好的输出长什么样"时参考 |

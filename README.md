@@ -18,9 +18,28 @@
 
 ### 方式二：完整版（系统学习）
 
-1. 阅读 [`skill/data-analysis-skill.md`](skill/data-analysis-skill.md) — 理解完整方法论
+1. 阅读 [`data-analysis-skill/SKILL.md`](data-analysis-skill/SKILL.md) — 理解完整方法论
 2. 参考 [`guide/student-guide.md`](guide/student-guide.md) — 掌握使用技巧和常见问题
 3. 查看 [`examples/`](examples/) — 参考完整分析示例
+
+### 方式三：装进 Agent 工具（长期驻留）
+
+如果你使用支持 Skill 的 Agent 工具（Claude Code / Cursor / Codex / WorkBuddy / OpenClaw / Hermes 等），把技能目录装进 runtime 的 skills 目录即可：
+
+```bash
+git clone --depth 1 https://github.com/wangzhigang-0913/aipi-data-analysis-skill.git
+cp -r aipi-data-analysis-skill/data-analysis-skill <skills-dir>/   # SKILL.md 需在目录根部
+```
+
+`<skills-dir>` = 你所用的 skills-compatible runtime 的用户级 skills 目录：
+
+| Runtime | 用户级 skills 目录 |
+|---|---|
+| Claude Code | `~/.claude/skills/` |
+| WorkBuddy | `~/.workbuddy/skills/` |
+| 其他 runtime (Cursor / Codex / OpenClaw / Hermes 等) | 见该 runtime 文档；只要目录内含 `SKILL.md` 即可被加载 |
+
+项目级：把 `data-analysis-skill/` 放进 `<project>/.<runtime>/skills/`。
 
 ---
 
@@ -42,14 +61,16 @@
 ```
 aipi-data-analysis-skill/
 ├── README.md                          # 本文件
-├── skill/
-│   └── data-analysis-skill.md         # 完整版技能包（含方法论、脚本模板、来源标注）
+├── data-analysis-skill/
+│   └── SKILL.md                       # 完整版技能包（含方法论、脚本模板、来源标注）
 ├── prompt/
 │   └── quick-prompt.md                # 轻量版 Prompt（复制粘贴即用）
 ├── guide/
 │   └── student-guide.md               # 学员使用指引（含常见问题、课堂练习建议）
-└── examples/
-    └── 鲜味坊华东区Q2分析示例.md      # 基于真实数据的完整分析示例
+├── examples/
+│   └── 鲜味坊华东区Q2分析示例.md      # 基于真实数据的完整分析示例
+├── test-prompts.json                  # 触发与产出测试集（开发者用）
+└── results.tsv                        # 优化日志
 ```
 
 ---
